@@ -1,0 +1,32 @@
+1- Endpoint get All Influencers by specialty
+2- Endpoint send email to inquiry  Company to influence 
+3- Endpoint Get All Packages assign to Influencer By Influencer id 
+4- Endpoint Get Top influencer with package requests
+5-  Endpoint that allow Influencer to update his package to available or not available
+6- Endpoint Get Packages  By Price Range
+7- Get all package is available 
+8- Endpoint find Package By Package price Is Greater Than
+9- Endpoint find Package By Package price Is Less Than  
+10-Endpoint send email to inquiry  influence to Company
+ 
+
+
+
+Diagram
+
+Java Mail
+
+Models
+1- Package
+2- Company
+3- Notification
+
+Services
+1- Package
+2- Company
+3- Notification
+
+ Controller
+1- Package
+2- Company
+3- Notification
