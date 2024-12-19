@@ -3,7 +3,6 @@ package com.example.marketing.Service;
 
 import com.example.marketing.ApiResponse.ApiException;
 import com.example.marketing.DTOs.BookingPackageDTO;
-import com.example.marketing.DTOs.InfluencerBookingCountDTO;
 import com.example.marketing.Model.BookingPackage;
 import com.example.marketing.Model.Company;
 import com.example.marketing.Model.Influencer;
@@ -15,6 +14,7 @@ import com.example.marketing.Repostiroy.PackageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -22,14 +22,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+//ARWA
 public class BookingPackageService {
 
     private final BookingPackageRepository bookingPackageRepository;
     private final InfluencerRepository influencerRepository;
     private final CompanyRepository companyRepository;
     private final PackageRepository packageRepository;
-
-    private final EmailSenderJava emailSender;
 
     public void addBookingPackage(Integer influencer_id, Integer company_id, Integer packages_Id, BookingPackage bookingPackage) {
 
@@ -55,20 +54,6 @@ public class BookingPackageService {
         influencerRepository.save(influencer);
         packageRepository.save(package1);
         bookingPackageRepository.save(bookingPackage);
-
-
-        // hussam
-        emailSender.sendEmail(company.getCompany_email(),
-                "add booking package successful",
-                "<html>" +
-                        "<body style='background-color: green; font-size: 18px; color: white;'>" +
-                        "<div style='background-color: white; border: 4px solid green; padding: 10px; color: black;'>" +
-                        "<p>Hello Mr. " + company.getCompany_name() + ",</p><br>" +
-                        "<p>Successfully added package with Your Id " + company.getId() + "</p><br>" +
-                        "<p>Best regards,</p>" +
-                        "</div>" +
-                        "</body>" +
-                        "</html>");
     }
 
 
@@ -211,7 +196,6 @@ public class BookingPackageService {
                         bookingPackage.getCompany().getId(),
                         bookingPackage.getInfluencer().getId(),
                         bookingPackage.getPackages().getId()));
-                
             }
         }
 
@@ -267,18 +251,6 @@ public class BookingPackageService {
 
         return totalRevenue;
     }
-    public String getMaxInfluencerName() {
-        List<InfluencerBookingCountDTO> result = bookingPackageRepository.findMaxInfluencerBookings();
 
-        if (!result.isEmpty()) {
-            InfluencerBookingCountDTO maxInfluencer = result.get(0); // Get the top influencer
-            return maxInfluencer.getInfluencerName(); // Return the influencer's name
-        }
-        return "No influencer found";
-    }
 
 }
-
-
-
-

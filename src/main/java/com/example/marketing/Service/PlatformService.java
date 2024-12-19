@@ -12,6 +12,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+///   Essa
+
 public class PlatformService {
     private final PlatformRepository platformRepository;
     private final InfluencerRepository influencerRepository;
@@ -36,6 +38,7 @@ public class PlatformService {
             throw new ApiException("platform not found");
         }
         platform1.setPlatform_name(platform.getPlatform_name());
+
         platform1.setPlatform_followers(platform.getPlatform_followers());
         platformRepository.save(platform1);
     }
@@ -47,6 +50,4 @@ public class PlatformService {
         }
         platformRepository.delete(platform);
     }
-
-
 }

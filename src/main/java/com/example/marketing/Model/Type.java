@@ -16,13 +16,14 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
+///   Essa
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty(message = "Type name can not be null")
     @Column(columnDefinition = "varchar(20) not null")
+    @Pattern(regexp = "^(Vedio|Post|visit)$" , message = "please enter type of advertisement")
     private String type_name;
     @NotNull(message = "price can not be null")
     @Column(columnDefinition = "double not null")

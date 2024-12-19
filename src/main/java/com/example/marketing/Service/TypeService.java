@@ -12,6 +12,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+///   Essa
+
 public class TypeService {
     private final TypeRepository typeRepository;
     private final PlatformRepository platformRepository;

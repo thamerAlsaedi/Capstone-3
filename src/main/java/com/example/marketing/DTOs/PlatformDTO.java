@@ -17,12 +17,7 @@ public class PlatformDTO {
 
     private Double platform_followers;
 
-
-
-    private Influencer influencer;
-
-
-    private List<Type> types;
+    private List<TypeDTO> types;
 
 
 }

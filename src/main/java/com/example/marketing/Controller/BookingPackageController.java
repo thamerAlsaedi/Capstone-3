@@ -2,9 +2,10 @@ package com.example.marketing.Controller;
 
 import com.example.marketing.ApiResponse.ApiResponse;
 import com.example.marketing.DTOs.BookingPackageDTO;
+import com.example.marketing.DTOs.ReviewDTO;
 import com.example.marketing.Model.BookingPackage;
-import com.example.marketing.Model.Influencer;
 import com.example.marketing.Service.BookingPackageService;
+import com.example.marketing.Service.ReviewService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +18,8 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/booking-package")
-
+//ARWA
 public class BookingPackageController   {
-
-
 
     private final BookingPackageService bookingPackageService;
 
@@ -49,7 +48,7 @@ public class BookingPackageController   {
     //3
     @GetMapping("/booking-packages/{influencerId}")
     public ResponseEntity getAllBookingPackagesByInfluencer(@PathVariable Integer influencerId) {
-        List<BookingPackageDTO> bookingPackages = bookingPackageService.getAllBookingPackagesByInfluencerId(influencerId);
+            List<BookingPackageDTO> bookingPackages = bookingPackageService.getAllBookingPackagesByInfluencerId(influencerId);
         return ResponseEntity.status(200).body(bookingPackages);
     }
     //4
@@ -83,18 +82,15 @@ public class BookingPackageController   {
     //9
     @GetMapping("/api/v1/booking-package/booking-packages/company/{companyId}")
     public ResponseEntity getAllBookingPackagesByCompany(@PathVariable Integer companyId) {
-        List<BookingPackageDTO> bookingPackages = bookingPackageService.getAllBookingPackagesByInfluencerId(companyId);
+        List<BookingPackageDTO> bookingPackages = bookingPackageService.getAllBookingPackagesByCompanyId(companyId);
         return ResponseEntity.status(200).body(bookingPackages);
     }
 
-
-
-    // hussam
-    @GetMapping("/max-influencer-name")
-    public ResponseEntity<String> getMaxInfluencerName() {
-        String influencerName = bookingPackageService.getMaxInfluencerName();
-
-        return ResponseEntity.ok(influencerName);
+    //10
+    @GetMapping("/influencer/{influencerId}/revenue")
+    public ResponseEntity getTotalRevenueForInfluencer(@PathVariable Integer influencerId) {
+        double totalRevenue = bookingPackageService.calculateTotalRevenueForInfluencer(influencerId);
+        return ResponseEntity.status(200).body(totalRevenue);
     }
 
 
@@ -102,6 +98,3 @@ public class BookingPackageController   {
 
 
 }
-
-
-

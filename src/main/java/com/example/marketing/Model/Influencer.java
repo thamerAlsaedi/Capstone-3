@@ -14,6 +14,7 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+///   Essa
 
 public class Influencer {
     @Id
@@ -27,13 +28,13 @@ public class Influencer {
     private String influencer_name;
 
     @NotEmpty(message = "Influencer phone cannot be Empty")
-    @Pattern(regexp = "^[0-9]{10,15}$", message = "Phone number must be a valid format (e.g.,234567890)")
+    @Pattern(regexp = "^\\+?[0-9]{10,15}$", message = "Phone number must be a valid format (e.g., +966234567890)")
     @Column(unique = true, nullable = false)
     private String influencer_phone;
 
     @NotEmpty(message = "Influencer email cannot be Empty")
-    @Email(message = "Invalid email format")
-    @Column(unique = true, nullable = false)
+    @Email
+    @Column(unique = true , columnDefinition = "varchar(50) not null")
     private String influencer_email;
 
     @NotEmpty
@@ -49,5 +50,8 @@ public class Influencer {
 
     @OneToMany(mappedBy = "influencer", cascade = CascadeType.ALL)
     private Set<Package> packages;
+
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "influencer")
+    private Set<BookingPackage> bookingPackages;
 
 }

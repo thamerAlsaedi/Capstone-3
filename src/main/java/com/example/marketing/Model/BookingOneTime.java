@@ -10,7 +10,6 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,29 +18,29 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 
-
+///   Essa
 public class BookingOneTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotNull(message = "booking can be not null")
     @Column(columnDefinition = "datetime not null")
-    private LocalDateTime booking_date = LocalDateTime.now();
+    private LocalDateTime bookingDate = LocalDateTime.now();
 
     @NotEmpty(message = "Booking_OneTime Status can not be null")
+    @Pattern(regexp = "PENDING|In Progress|COMPLETED|REJECT|Accepted", message = "Booking status must be one of PENDING, IN PROCESS, COMPLETED or REJECT")
     @Column(columnDefinition = "varchar(20) not null")
-    private String booking_status = null;
+    private String bookingStatus = "PENDING";
 
-    @NotNull(message = "total price can not be null")
-    @Column(columnDefinition = "double not null")
-    @Positive
-    private Double booking_totalPrice;
 
-    @NotNull
+
+//    @NotNull
     @Column(nullable = false)
-    @JsonFormat(pattern = "yyyy-mm-dd")
+//    @JsonFormat(pattern = "yyyy-mm-dd")
+    @FutureOrPresent
     private LocalDate advertisementStartDate;
 
+    // Relationships
     @ManyToOne
 //    @JoinColumn(name = "Company_company_id", nullable = false)
     @JsonIgnore

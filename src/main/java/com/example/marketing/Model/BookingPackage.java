@@ -16,7 +16,7 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
+//ARWA
 public class BookingPackage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +28,8 @@ public class BookingPackage {
     @Column(columnDefinition = "datetime not null")
     private LocalDateTime bookingDate = LocalDateTime.now();
 
-    @NotNull(message = "Booking total price cannot be null")
     @Positive(message = "Booking total price must be greater than 0")
-    @Column(columnDefinition = "double not null")
+    @Column(columnDefinition = "double")
     private Double bookingTotalPrice;
 
     @Pattern(regexp = "PENDING|IN PROCESS|COMPLETED|REJECT", message = "Booking status must be one of PENDING, IN PROCESS, COMPLETED or REJECT")
@@ -39,7 +38,7 @@ public class BookingPackage {
 
     @NotNull
     @Column(nullable = false)
-    @JsonFormat(pattern = "yyyy-mm-dd")
+    //@JsonFormat(pattern = "yyyy-mm-dd")
     private LocalDate advertisementStartDate;
 
     @ManyToOne
@@ -53,4 +52,5 @@ public class BookingPackage {
     @ManyToOne
     @JsonIgnore
     private Package packages;
+
 }
