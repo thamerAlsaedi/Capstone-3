@@ -19,8 +19,14 @@ DTOs
 1- CompanyDTO
 2- InfluencerDTOGetName
 3- PackageDTO
+
 Models
 1- Package
+2- Company
+3- Notification
+
+Repository
+ Package
 2- Company
 3- Notification
 
