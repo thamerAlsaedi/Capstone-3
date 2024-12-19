@@ -15,7 +15,10 @@
 Diagram
 
 Java Mail
-
+DTOs
+1- CompanyDTO
+2- InfluencerDTOGetName
+3- PackageDTO
 Models
 1- Package
 2- Company
